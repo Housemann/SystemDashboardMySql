@@ -1,0 +1,37 @@
+{
+  "elements":
+  [
+    { 
+      "type": "ValidationTextBox",
+      "name": "server", 
+      "caption": "Server" 
+    },
+    { 
+      "type": "NumberSpinner",
+      "name": "port", 
+      "caption": "Port" 
+    },
+    { 
+      "type": "ValidationTextBox",
+      "name": "user", 
+      "caption": "User" 
+    },
+    { 
+      "type": "ValidationTextBox",
+      "name": "password", 
+      "caption": "Password" 
+    },
+    { 
+      "type": "ValidationTextBox",
+      "name": "database", 
+      "caption": "Database" 
+    }
+  ],
+  "actions": [
+    {
+      "type": "Button",
+      "caption": "Test connection",
+      "onClick": "SDB_TestConnection($id);"
+    }
+  ]
+}

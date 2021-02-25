@@ -1,0 +1,15 @@
+{
+  "id": "{B408EDD5-667E-C748-336D-F2911EE09BA2}",
+  "name": "SystemDashboardMySql",
+  "type": 3,
+  "vendor": "",
+  "aliases":
+  [
+      "System Dashboard"
+  ],
+  "url": "https://github.com/Housemann/SystemDashboardMySql",
+  "parentRequirements": [],
+  "childRequirements": [],
+  "implemented": [],
+  "prefix": "SDB"
+}

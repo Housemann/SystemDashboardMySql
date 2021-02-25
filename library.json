@@ -1,0 +1,12 @@
+{
+  "id": "{34B7C65C-41E3-5AF6-0A79-1A9FFE7CAB11}",
+  "author": "Housemann",
+  "name": "SystemDashboard",
+  "url": "https://github.com/Housemann/SystemDashboardMySql",
+  "compatibility": {
+      "version": "5.5"
+  },
+  "version": "1.0",
+  "build": 0,
+  "date": 0
+}
