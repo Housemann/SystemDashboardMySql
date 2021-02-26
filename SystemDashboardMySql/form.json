@@ -25,6 +25,38 @@
       "type": "ValidationTextBox",
       "name": "database", 
       "caption": "Database" 
+    },
+    { 
+      "type": "NumberSpinner",
+      "name": "maxMessage", 
+      "caption": "Max. Messages",
+      "minimum": 1,
+      "maximum": 2000
+    },
+    { 
+      "type": "Label"
+    },	
+    { 
+      "type": "NumberSpinner",
+      "name": "UpdateIntervall", 
+      "caption": "Timerintervall"
+    },
+    { 
+      "type": "Label"
+    },  
+    { 
+      "type": "Label", 
+      "caption": "WebHook Data" 
+    },
+    { 
+      "type": "ValidationTextBox",
+      "name": "UsernameWebHook", 
+      "caption": "Username" 
+    },
+	  { 
+      "type": "PasswordTextBox", 
+      "name": "PasswordWebHook",
+      "caption": "Password" 
     }
   ],
   "actions": [
