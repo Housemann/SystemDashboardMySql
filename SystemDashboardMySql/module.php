@@ -193,15 +193,15 @@
               case 'toggle':
                 $ValueStatus = $this->GetValue("status");
                 if($ValueStatus==0) {
-                  $query = "update ips_MessageBoard set status=1 WHERE status=0 and id=".$id;
+                  $query = "update ips_MessageBoardx set status=1 WHERE status=0 and id=".$id;
                 } else {
-                  $query = "update ips_MessageBoard set status=0 WHERE status=1 and id=".$id;
+                  $query = "update ips_MessageBoardx set status=0 WHERE status=1 and id=".$id;
                 }
                 $this->SqlExecute($query);
                 $this->SelectSqlStatements();
                 break;
               case 'delete':
-                $query = "delete from ips_MessageBoard where id=".$id;
+                $query = "delete from ips_MessageBoardx where id=".$id;
                 $this->SqlExecute($query);
                 $this->SelectSqlStatements();
                 break;
@@ -218,12 +218,12 @@
         $filter = GetValueFormatted($this->GetIDForIdent("filter"));
         $LimitSQL = $this->ReadPropertyInteger("maxMessage");         
 
-        $query = "select id, date, message, status, type, icon, craftname, expirationDate 
-                  from ips_MessageBoard where status=".$status;
+        $query = "select id, date, message, status, type, icon, craftname, expirationDate, MediaID, AttachmentPath
+                  from ips_MessageBoardx where status=".$status;
 
-        $queryCnt = "select count(*) cnt from ips_MessageBoard where status=".$status;            
+        $queryCnt = "select count(*) cnt from ips_MessageBoardx where status=".$status;            
 
-        $queryMessageStatus = "select status, count(*) cnt from ips_MessageBoard group by status order by status";
+        $queryMessageStatus = "select status, count(*) cnt from ips_MessageBoardx group by status order by status";
                   
         if($messageType!==0) {
           $addWhere1 = " and type=".$messageType;
@@ -263,7 +263,7 @@
         $filter = GetValueFormatted($this->GetIDForIdent("filter"));
         $LimitSQL = $this->ReadPropertyInteger("maxMessage");
 
-        $query = "update ips_MessageBoard 
+        $query = "update ips_MessageBoardx 
                   set  status=##setStatus## 
                   WHERE status=".$status;
 
@@ -289,7 +289,7 @@
       // Timer für Updateintervall
       public function TimerExpiredUpdate() 
       {
-        $query = "update ips_MessageBoard set status=1 where status = 0 and expirationDate < NOW()";
+        $query = "update ips_MessageBoardx set status=1 where status = 0 and expirationDate < NOW()";
         @$this->SqlExecute($query);
         $this->SelectSqlStatements();
       }
@@ -329,7 +329,7 @@
       }
 
       // Funktion zum senden einer Nachricht ins DashBoard
-      public function SendSqlMessage(string $type, string $icon, string $craftname, string $msg, int $expirationTime) 
+      public function SendSqlMessage(string $type, string $icon, string $craftname, string $msg, int $expirationTime, string $MediaID, string $AttachmentPath) 
       {
         if (is_numeric($type)==false) { 
           switch(strtolower($type)) {
@@ -359,7 +359,7 @@
           $expirationDate = "DATE_ADD(NOW(), INTERVAL ".$expirationTime." SECOND)";
         }
   
-        $query = "insert into ips_MessageBoard (date,message,status,type,icon,craftname,expirationDate) VALUES (NOW(),'".addslashes($msg)."',0,".$type.",'".$icon."','".$craftname."',".$expirationDate.")";
+        $query = "insert into ips_MessageBoardx (date,message,status,type,icon,craftname,expirationDate, MediaID, AttachmentPath) VALUES (NOW(),'".addslashes($msg)."',0,".$type.",'".$icon."','".$craftname."',".$expirationDate.",'".$MediaID."','".$AttachmentPath."')";
         @$this->SqlExecute($query);
         $this->SelectSqlStatements();
       
@@ -386,7 +386,7 @@
         $style = $style.'.orange { padding: 5px; color: rgb(255, 255, 255); background-color: rgb(255, 160, 0); background-icon: linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-icon: -o-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -moz-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -webkit-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -ms-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); }';
         $style = $style.'.time {  vertical-align: text-top; float:left; font-size: 9px; padding-left:3px; padding-top: 0px; padding-right: 2px; margin-right:4px; }';
         $style = $style.'.img { vertical-align: text-top; padding-left: 8px; padding-right: 1px; padding-bottom:0px; width:25px; height: 25px;}';
-        $style = $style.'.bild { margin-left:4px; margin-right:3px; padding: 1px; padding-top:4px; padding-right:0px; height: 80px;}';
+        $style = $style.'.bild { margin-left:4px; margin-right:3px; padding: 1px; padding-top:4px; padding-right:0px; height: 100px;}';
         
         $style = $style.'.pagebutton {float:left; padding: 5px; margin-right: 1px; color: rgb(255, 255, 255); background-color: rgb(255, 160, 0); background-icon: linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-icon: -o-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -moz-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -webkit-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -ms-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); }';
           
@@ -411,9 +411,9 @@
           foreach ($sqlRows as $rows) {
             if ($rows['type']) {
               switch ($rows['type']) {
-                #case 5:
-                #	$type = 'orange';
-                #break;
+                case 5:
+                	$type = 'orange';
+                break;
                 case 4:
                   $type = 'blue';
                 break;
@@ -438,28 +438,22 @@
             } else {
               $icon = '<img src=\'img/icons/Ok.svg\' class="img"></img>';
             }
+            if($rows['AttachmentPath']) {
+              $linkbild = '<br><br><a href="'.$rows['AttachmentPath'].'" target="_blank"><img class=\'bild\' src="'.$rows['AttachmentPath'].'"></a>';
+            } else {
+              $linkbild = "";
+            }
             
             $phpdate = strtotime($rows['date']);
-            
-            #$bild = "https://www.toggo.de/media/fallback-loewe-2-8192-10110.jpg";
-            #$html = '<img class=\'bild\' src="'.$bild.'">';
 
             $content .= '<tr>';
+
             $content = $content.'<td class="fst">'.$icon.'<div class="time">'. date("d.m.Y H:i:s", $phpdate) . '</div></td>';
             #$content = $content.'<td class="mid">' . utf8_decode($rows['message']).'</td>';
             
             #$content = $content.'<td class="mid">' . $rows['message'].'<br><br>'.$html.'</td>';
-            $content = $content.'<td class="mid">' . $rows['message'].'</td>';
+            $content = $content.'<td class="mid">' . $rows['message'] . $linkbild . '</td>';
 
-            $content = $content . "<td class='mid'>";
-            
-            if($bild != "") { 
-              #$linkbild = '<div><img class=\'bild\' src=\'' . $bild . ' \' onclick="window.xhrGet=function xhrGet(o) {var HTTP = new XMLHttpRequest();HTTP.open(\'GET\',o.url,true\''.$Username.'\',\''.$Password.'\');HTTP.send();};window.xhrGet({ url: \'hook/SystemDashboard?ts=\' + (new Date()).getTime() + \'&action=showimage&image='.$bild.'&number='.$rows['id'].'&text='.utf8_encode($rows['message']).'\' });" ></div>'; 
-            } else { 
-              #$linkbild = ""; 
-            }
-            $content = $content . "</td>";
-          
             ################################################################################################################################################################################################################################################################################################################################################				
             if($ValueDeleteStatusID == 0) {
               $content = $content.'<td class=\'lst\'><div class=\''.$type.'\' onclick="window.xhrGet=function xhrGet(o) {var HTTP = new XMLHttpRequest();HTTP.open(\'GET\',o.url,true,\''.$Username.'\',\''.$Password.'\');HTTP.send();};window.xhrGet({ url: \'hook/SystemDashboard?ts=\' + (new Date()).getTime() + \'&action=toggle&id='.$rows['id'].'\' });">OK</div></td>';
@@ -503,7 +497,7 @@
       {
         # SQL TABELLE ANLEGEN (date not NULL geht nicht für MariaDB weil immer mit CurrentTimestamp belegt wird)
         $query = "
-        CREATE TABLE IF NOT EXISTS `ips_MessageBoard` (
+        CREATE TABLE IF NOT EXISTS `ips_MessageBoardx` (
           id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
           date timestamp NULL,
           message NVARCHAR(1000) NOT NULL,
@@ -511,12 +505,14 @@
           type int NOT NULL,
           icon nvarchar(20) NOT NULL,
           craftname NVARCHAR(250) NOT NULL,
-          expirationDate datetime NULL
+          expirationDate datetime NULL,
+          MediaID NVARCHAR(6) NULL,
+          AttachmentPath NVARCHAR(400) NULL
         )";
 
         #Create Indexe anlegen
-        $createuniqueindex = "create unique index IF NOT EXISTS ui_id on ips_MessageBoard (id)";
-        $createqueryindex = "create index IF NOT EXISTS i_stat_type_craft on ips_MessageBoard (status,type,craftname)";
+        $createuniqueindex = "create unique index IF NOT EXISTS ui_id on ips_MessageBoardx (id)";
+        $createqueryindex = "create index IF NOT EXISTS i_stat_type_craft on ips_MessageBoardx (status,type,craftname)";
         
         $this->SqlExecute($query);
         $this->SqlExecute($createuniqueindex);
