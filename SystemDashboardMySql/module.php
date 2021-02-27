@@ -28,11 +28,12 @@
         $this->RegisterPropertyString('UsernameWebHook', '');
         $this->RegisterPropertyString('PasswordWebHook', '');
         $this->RegisterPropertyInteger("UpdateIntervall",60);
+        $this->RegisterPropertyString('getProfileassoziation', '');
 
         //Profile
         $this->RegisterProfileIntegerEx('SDB.Status'  , '', '', '', Array(
           Array(0 , $this->translate('Unread')       , '', '0xFFBE80'),
-          Array(1 , $this->translate('read')         , '', '0')
+          Array(1 , $this->translate('Read')         , '', '0')
         ));          
         $this->RegisterProfileIntegerEx('SDB.MessageType'  , '', '', '', Array(
           Array(0 , $this->translate('All')           , '', '0'),
@@ -128,7 +129,11 @@
           $this->SetStatus(IS_INACTIVE);
         }
 
+        // Timer setzten
         $this->SetTimerInterval("Update", $this->ReadPropertyInteger("UpdateIntervall") * 60 * 1000);
+
+        // VarProfil aktualisieren
+        $this->FillVariableProfileFilter();
 
       }
       
@@ -268,7 +273,7 @@
         }
 
         if($filter!==$this->translate("All")) {
-          $addWhere2 = " and craftname='".$this->translate($filter)."'";
+          $addWhere2 = " and craftname='".$filter."'";
           $query = $query . $addWhere2;
         }
 
@@ -295,7 +300,10 @@
         $profilename = 'SDB.Filter';
 
         #Profil wo Daten her geholt werden
-        $ProfileForData = 'STNB.NotificationInstanzen';
+        
+        $ProfileForData = $this->ReadPropertyString("getProfileassoziation");
+        if(empty($ProfileForData))
+          $ProfileForData = 'STNB.NotificationInstanzen';
 
         if (IPS_VariableProfileExists($profilename) === false) {
           IPS_CreateVariableProfile($profilename, 1);
@@ -462,9 +470,9 @@
       }
 
 
-      ##################################################################################################
-      ###############################   SQL Bereich für die Verbindung   ###############################
-      ##################################################################################################
+      ###############################################################################################################################
+      ###############################   SQL Bereich für die Verbindung und Konfiguration und Execute  ###############################
+      ###############################################################################################################################
       // Test Connection
       public function TestConnection()
       {
@@ -605,8 +613,8 @@
   
           return $rows;
       }
-      ##################################################################################################
-      ##################################################################################################
+      ###############################################################################################################################
+      ###############################################################################################################################
 
 
 

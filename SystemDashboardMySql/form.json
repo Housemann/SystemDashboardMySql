@@ -2,6 +2,10 @@
   "elements":
   [
     { 
+      "type": "Label", 
+      "caption": "MySql Settings" 
+    },
+    { 
       "type": "ValidationTextBox",
       "name": "server", 
       "caption": "Server" 
@@ -25,6 +29,16 @@
       "type": "ValidationTextBox",
       "name": "database", 
       "caption": "Database" 
+    },
+    { 
+      "type": "Label", 
+      "caption": "Modul config" 
+    },
+    { 
+      "type": "ValidationTextBox",
+      "name": "getProfileassoziation", 
+      "caption": "Variable Profile (Profile which is taken over into the filter)" ,
+      "width": "500px"
     },
     { 
       "type": "NumberSpinner",
