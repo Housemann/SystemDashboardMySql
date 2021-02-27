@@ -386,7 +386,7 @@
         $style = $style.'.orange { padding: 5px; color: rgb(255, 255, 255); background-color: rgb(255, 160, 0); background-icon: linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-icon: -o-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -moz-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -webkit-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -ms-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); }';
         $style = $style.'.time {  vertical-align: text-top; float:left; font-size: 9px; padding-left:3px; padding-top: 0px; padding-right: 2px; margin-right:4px; }';
         $style = $style.'.img { vertical-align: text-top; padding-left: 8px; padding-right: 1px; padding-bottom:0px; width:25px; height: 25px;}';
-        $style = $style.'.bild { margin-left:4px; margin-right:3px; padding: 1px; padding-top:4px; padding-right:0px; width:30px; height: 30px;}';
+        $style = $style.'.bild { margin-left:4px; margin-right:3px; padding: 1px; padding-top:4px; padding-right:0px; height: 80px;}';
         
         $style = $style.'.pagebutton {float:left; padding: 5px; margin-right: 1px; color: rgb(255, 255, 255); background-color: rgb(255, 160, 0); background-icon: linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-icon: -o-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -moz-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -webkit-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -ms-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); }';
           
@@ -440,18 +440,23 @@
             }
             
             $phpdate = strtotime($rows['date']);
-            $bild = "";
-          
+            
+            #$bild = "https://www.toggo.de/media/fallback-loewe-2-8192-10110.jpg";
+            #$html = '<img class=\'bild\' src="'.$bild.'">';
+
             $content .= '<tr>';
             $content = $content.'<td class="fst">'.$icon.'<div class="time">'. date("d.m.Y H:i:s", $phpdate) . '</div></td>';
             #$content = $content.'<td class="mid">' . utf8_decode($rows['message']).'</td>';
+            
+            #$content = $content.'<td class="mid">' . $rows['message'].'<br><br>'.$html.'</td>';
             $content = $content.'<td class="mid">' . $rows['message'].'</td>';
-          
+
             $content = $content . "<td class='mid'>";
+            
             if($bild != "") { 
-              #$linkbild = '<div><img class=\'bild\' src=\'' . $bild . ' \' onclick="window.xhrGet=function xhrGet(o) {var HTTP = new XMLHttpRequest();HTTP.open(\'GET\',o.url,true);HTTP.send();};window.xhrGet({ url: \'hook/msg?ts=\' + (new Date()).getTime() + \'&action=showimage&image='.$bild.'&number='.$rows['id'].'&text='.utf8_encode($rows['message']).'\' });" ></div>'; 
+              #$linkbild = '<div><img class=\'bild\' src=\'' . $bild . ' \' onclick="window.xhrGet=function xhrGet(o) {var HTTP = new XMLHttpRequest();HTTP.open(\'GET\',o.url,true\''.$Username.'\',\''.$Password.'\');HTTP.send();};window.xhrGet({ url: \'hook/SystemDashboard?ts=\' + (new Date()).getTime() + \'&action=showimage&image='.$bild.'&number='.$rows['id'].'&text='.utf8_encode($rows['message']).'\' });" ></div>'; 
             } else { 
-              $linkbild = ""; 
+              #$linkbild = ""; 
             }
             $content = $content . "</td>";
           
