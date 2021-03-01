@@ -333,20 +333,17 @@
       {
         if (is_numeric($type)==false) { 
           switch(strtolower($type)) {
-              case "information":
+              case $this->translate("information"):
                   $type=1;
                   break;
-              case "alarm":
+              case $this->translate("warning"):
                   $type=2;
                   break;
-              case "warnung":
+              case $this->translate("alert"):
                   $type=3;
                   break;
-              case "aufgabe":
+              case $this->translate("todo"):
                   $type=4;
-                  break;
-              case "homematic":
-                  $type=5;
                   break;
           }
         } elseif (is_numeric($type)==true) {
