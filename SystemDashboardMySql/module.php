@@ -386,7 +386,7 @@
         $style = $style.'.orange_sdb { padding: 5px; color: rgb(255, 255, 255); background-color: rgb(255, 160, 0); background-icon: linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-icon: -o-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -moz-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -webkit-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -ms-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); }';
         $style = $style.'.time_sdb {  vertical-align: text-top; float:left; font-size: 9px; padding-left:3px; padding-top: 0px; padding-right: 2px; margin-right:4px; }';
         $style = $style.'.img_sdb { vertical-align: text-top; padding-left: 8px; padding-right: 1px; padding-bottom:0px; width:25px; height: 25px;}';
-        $style = $style.'.bild_sdb { margin-left:4px; margin-right:3px; padding: 1px; padding-top:4px; padding-right:0px; height: 200px;}';
+        $style = $style.'.bild_sdb { margin-left:4px; margin-right:3px; padding: 1px; padding-top:4px; padding-right:0px; height: 150px;}';
         
         $style = $style.'.pagebutton_sdb {float:left; padding: 5px; margin-right: 1px; color: rgb(255, 255, 255); background-color: rgb(255, 160, 0); background-icon: linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-icon: -o-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -moz-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -webkit-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -ms-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); }';
           
@@ -439,7 +439,7 @@
               $icon = '<img src=\'img/icons/Ok.svg\' class="img_sdb"></img>';
             }
             if($rows['AttachmentPath']) {
-              $linkbild = '<br><br><a href="'.$rows['AttachmentPath'].'" target="_blank"><img class=\'bild_sdb\' src="'.$rows['AttachmentPath'].'"></a>';
+              $linkbild = '<br><a href="'.$rows['AttachmentPath'].'" target="_blank"><img class=\'bild_sdb\' src="'.$rows['AttachmentPath'].'"></a>';
             } else {
               $linkbild = "";
             }
