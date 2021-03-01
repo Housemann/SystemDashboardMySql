@@ -193,15 +193,15 @@
               case 'toggle':
                 $ValueStatus = $this->GetValue("status");
                 if($ValueStatus==0) {
-                  $query = "update ips_MessageBoardx set status=1 WHERE status=0 and id=".$id;
+                  $query = "update ips_MessageBoard set status=1 WHERE status=0 and id=".$id;
                 } else {
-                  $query = "update ips_MessageBoardx set status=0 WHERE status=1 and id=".$id;
+                  $query = "update ips_MessageBoard set status=0 WHERE status=1 and id=".$id;
                 }
                 $this->SqlExecute($query);
                 $this->SelectSqlStatements();
                 break;
               case 'delete':
-                $query = "delete from ips_MessageBoardx where id=".$id;
+                $query = "delete from ips_MessageBoard where id=".$id;
                 $this->SqlExecute($query);
                 $this->SelectSqlStatements();
                 break;
@@ -219,11 +219,11 @@
         $LimitSQL = $this->ReadPropertyInteger("maxMessage");         
 
         $query = "select id, date, message, status, type, icon, craftname, expirationDate, MediaID, AttachmentPath
-                  from ips_MessageBoardx where status=".$status;
+                  from ips_MessageBoard where status=".$status;
 
-        $queryCnt = "select count(*) cnt from ips_MessageBoardx where status=".$status;            
+        $queryCnt = "select count(*) cnt from ips_MessageBoard where status=".$status;            
 
-        $queryMessageStatus = "select status, count(*) cnt from ips_MessageBoardx group by status order by status";
+        $queryMessageStatus = "select status, count(*) cnt from ips_MessageBoard group by status order by status";
                   
         if($messageType!==0) {
           $addWhere1 = " and type=".$messageType;
@@ -263,7 +263,7 @@
         $filter = GetValueFormatted($this->GetIDForIdent("filter"));
         $LimitSQL = $this->ReadPropertyInteger("maxMessage");
 
-        $query = "update ips_MessageBoardx 
+        $query = "update ips_MessageBoard 
                   set  status=##setStatus## 
                   WHERE status=".$status;
 
@@ -289,7 +289,7 @@
       // Timer für Updateintervall
       public function TimerExpiredUpdate() 
       {
-        $query = "update ips_MessageBoardx set status=1 where status = 0 and expirationDate < NOW()";
+        $query = "update ips_MessageBoard set status=1 where status = 0 and expirationDate < NOW()";
         @$this->SqlExecute($query);
         $this->SelectSqlStatements();
       }
@@ -359,7 +359,7 @@
           $expirationDate = "DATE_ADD(NOW(), INTERVAL ".$expirationTime." SECOND)";
         }
   
-        $query = "insert into ips_MessageBoardx (date,message,status,type,icon,craftname,expirationDate, MediaID, AttachmentPath) VALUES (NOW(),'".addslashes($msg)."',0,".$type.",'".$icon."','".$craftname."',".$expirationDate.",'".$MediaID."','".$AttachmentPath."')";
+        $query = "insert into ips_MessageBoard (date,message,status,type,icon,craftname,expirationDate, MediaID, AttachmentPath) VALUES (NOW(),'".addslashes($msg)."',0,".$type.",'".$icon."','".$craftname."',".$expirationDate.",'".$MediaID."','".$AttachmentPath."')";
         @$this->SqlExecute($query);
         $this->SelectSqlStatements();
       
@@ -497,7 +497,7 @@
       {
         # SQL TABELLE ANLEGEN (date not NULL geht nicht für MariaDB weil immer mit CurrentTimestamp belegt wird)
         $query = "
-        CREATE TABLE IF NOT EXISTS `ips_MessageBoardx` (
+        CREATE TABLE IF NOT EXISTS `ips_MessageBoard` (
           id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
           date timestamp NULL,
           message NVARCHAR(1000) NOT NULL,
@@ -511,8 +511,8 @@
         )";
 
         #Create Indexe anlegen
-        $createuniqueindex = "create unique index IF NOT EXISTS ui_id on ips_MessageBoardx (id)";
-        $createqueryindex = "create index IF NOT EXISTS i_stat_type_craft on ips_MessageBoardx (status,type,craftname)";
+        $createuniqueindex = "create unique index IF NOT EXISTS ui_id on ips_MessageBoard (id)";
+        $createqueryindex = "create index IF NOT EXISTS i_stat_type_craft on ips_MessageBoard (status,type,craftname)";
         
         $this->SqlExecute($query);
         $this->SqlExecute($createuniqueindex);
