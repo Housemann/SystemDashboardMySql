@@ -38,8 +38,8 @@
         $this->RegisterProfileIntegerEx('SDB.MessageType'  , '', '', '', Array(
           Array(0 , $this->translate('All')           , '', '0'),
           Array(1 , $this->translate('Information')   , '', '0x00FF00'),
-          Array(3 , $this->translate('Warning')       , '', '0xFFFF00'),
-          Array(2 , $this->translate('Alert')         , '', '0xFF0000'),
+          Array(2 , $this->translate('Warning')       , '', '0xFFFF00'),
+          Array(3 , $this->translate('Alert')         , '', '0xFF0000'),
           Array(4 , $this->translate('ToDo')          , '', '0x0000FF')
         ));      
         $this->RegisterProfileIntegerEx('SDB.Filter'  , '', '', '', Array(
