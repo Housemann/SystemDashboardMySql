@@ -453,11 +453,11 @@
 
             $content = $content . "<td class='mid'>";
             
-            if($bild != "") { 
+            #if($bild != "") { 
               #$linkbild = '<div><img class=\'bild\' src=\'' . $bild . ' \' onclick="window.xhrGet=function xhrGet(o) {var HTTP = new XMLHttpRequest();HTTP.open(\'GET\',o.url,true\''.$Username.'\',\''.$Password.'\');HTTP.send();};window.xhrGet({ url: \'hook/SystemDashboard?ts=\' + (new Date()).getTime() + \'&action=showimage&image='.$bild.'&number='.$rows['id'].'&text='.utf8_encode($rows['message']).'\' });" ></div>'; 
-            } else { 
+            #} else { 
               #$linkbild = ""; 
-            }
+            #}
             $content = $content . "</td>";
           
             ################################################################################################################################################################################################################################################################################################################################################				
