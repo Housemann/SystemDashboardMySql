@@ -37,8 +37,9 @@
     { 
       "type": "ValidationTextBox",
       "name": "getProfileassoziation", 
-      "caption": "Variable Profile (Profile which is taken over into the filter)" ,
-      "width": "500px"
+      "caption": "Variable Profile (Profile which is taken over into the filter. If empty the profile STNB.NotificationInstanzen loaded)" ,
+      "multiline": true,
+      "width": "100%"
     },
     { 
       "type": "NumberSpinner",

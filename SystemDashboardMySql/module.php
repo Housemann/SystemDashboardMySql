@@ -218,7 +218,7 @@
         $filter = GetValueFormatted($this->GetIDForIdent("filter"));
         $LimitSQL = $this->ReadPropertyInteger("maxMessage");         
 
-        $query = "select id, date, message, status, type, icon, craftname, expirationDate 
+        $query = "select id, date, message, status, type, icon, craftname, expirationDate, MediaID, AttachmentPath
                   from ips_MessageBoard where status=".$status;
 
         $queryCnt = "select count(*) cnt from ips_MessageBoard where status=".$status;            
@@ -329,7 +329,7 @@
       }
 
       // Funktion zum senden einer Nachricht ins DashBoard
-      public function SendSqlMessage(string $type, string $icon, string $craftname, string $msg, int $expirationTime) 
+      public function SendSqlMessage(string $type, string $icon, string $craftname, string $msg, int $expirationTime, string $MediaID, string $AttachmentPath) 
       {
         if (is_numeric($type)==false) { 
           switch(strtolower($type)) {
@@ -359,7 +359,7 @@
           $expirationDate = "DATE_ADD(NOW(), INTERVAL ".$expirationTime." SECOND)";
         }
   
-        $query = "insert into ips_MessageBoard (date,message,status,type,icon,craftname,expirationDate) VALUES (NOW(),'".addslashes($msg)."',0,".$type.",'".$icon."','".$craftname."',".$expirationDate.")";
+        $query = "insert into ips_MessageBoard (date,message,status,type,icon,craftname,expirationDate, MediaID, AttachmentPath) VALUES (NOW(),'".addslashes($msg)."',0,".$type.",'".$icon."','".$craftname."',".$expirationDate.",'".$MediaID."','".$AttachmentPath."')";
         @$this->SqlExecute($query);
         $this->SelectSqlStatements();
       
@@ -374,26 +374,26 @@
         // Etwas CSS und HTML
         $style = "";
         $style = $style.'<style type="text/css">';
-        $style = $style.'table.msg { width:100%; border-collapse: collapse; }';
-        $style = $style.'td.fst { width: 36px; padding: 2px; border-left: 1px solid rgba(255, 255, 255, 0.2); border-top: 1px solid rgba(255, 255, 255, 0.1); }';
-        $style = $style.'td.mid { padding: 2px;  border-top: 1px solid rgba(255, 255, 255, 0.1); }';
-        $style = $style.'td.lst { width: 42px; text-align:center; padding: 2px;  border-right: 1px solid rgba(255, 255, 255, 0.2); border-top: 1px solid rgba(255, 255, 255, 0.1); }';
+        $style = $style.'table.msg_sdb { width:100%; border-collapse: collapse; }';
+        $style = $style.'td.fst_sdb { width: 36px; padding: 2px; border-left: 1px solid rgba(255, 255, 255, 0.2); border-top: 1px solid rgba(255, 255, 255, 0.1); }';
+        $style = $style.'td.mid_sdb { padding: 2px;  border-top: 1px solid rgba(255, 255, 255, 0.1); }';
+        $style = $style.'td.lst_sdb { width: 42px; text-align:center; padding: 2px;  border-right: 1px solid rgba(255, 255, 255, 0.2); border-top: 1px solid rgba(255, 255, 255, 0.1); }';
         $style = $style.'tr:last-child { border-bottom: 1px solid rgba(255, 255, 255, 0.2); }';
-        $style = $style.'.blue { padding: 5px; color: rgb(255, 255, 255); background-color: rgb(0, 0, 255); background-icon: linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-icon: -o-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -moz-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -webkit-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -ms-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); }';
-        $style = $style.'.red { padding: 5px; color: rgb(255, 255, 255); background-color: rgb(255, 0, 0); background-icon: linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-icon: -o-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -moz-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -webkit-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -ms-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); }';
-        $style = $style.'.green { padding: 5px; color: rgb(255, 255, 255); background-color: rgb(0, 255, 0); background-icon: linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-icon: -o-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -moz-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -webkit-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -ms-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); }';
-        $style = $style.'.yellow { padding: 5px; color: rgb(255, 255, 255); background-color: rgb(255, 255, 0); background-icon: linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-icon: -o-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -moz-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -webkit-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -ms-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); }';
-        $style = $style.'.orange { padding: 5px; color: rgb(255, 255, 255); background-color: rgb(255, 160, 0); background-icon: linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-icon: -o-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -moz-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -webkit-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -ms-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); }';
-        $style = $style.'.time {  vertical-align: text-top; float:left; font-size: 9px; padding-left:3px; padding-top: 0px; padding-right: 2px; margin-right:4px; }';
-        $style = $style.'.img { vertical-align: text-top; padding-left: 8px; padding-right: 1px; padding-bottom:0px; width:25px; height: 25px;}';
-        $style = $style.'.bild { margin-left:4px; margin-right:3px; padding: 1px; padding-top:4px; padding-right:0px; height: 80px;}';
+        $style = $style.'.blue_sdb { padding: 5px; color: rgb(255, 255, 255); background-color: rgb(0, 0, 255); background-icon: linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-icon: -o-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -moz-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -webkit-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -ms-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); }';
+        $style = $style.'.red_sdb { padding: 5px; color: rgb(255, 255, 255); background-color: rgb(255, 0, 0); background-icon: linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-icon: -o-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -moz-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -webkit-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -ms-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); }';
+        $style = $style.'.green_sdb { padding: 5px; color: rgb(255, 255, 255); background-color: rgb(0, 255, 0); background-icon: linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-icon: -o-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -moz-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -webkit-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -ms-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); }';
+        $style = $style.'.yellow_sdb { padding: 5px; color: rgb(255, 255, 255); background-color: rgb(255, 255, 0); background-icon: linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-icon: -o-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -moz-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -webkit-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -ms-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); }';
+        $style = $style.'.orange_sdb { padding: 5px; color: rgb(255, 255, 255); background-color: rgb(255, 160, 0); background-icon: linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-icon: -o-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -moz-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -webkit-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -ms-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); }';
+        $style = $style.'.time_sdb {  vertical-align: text-top; float:left; font-size: 9px; padding-left:3px; padding-top: 0px; padding-right: 2px; margin-right:4px; }';
+        $style = $style.'.img_sdb { vertical-align: text-top; padding-left: 8px; padding-right: 1px; padding-bottom:0px; width:25px; height: 25px;}';
+        $style = $style.'.bild_sdb { margin-left:4px; margin-right:3px; padding: 1px; padding-top:4px; padding-right:0px; height: 200px;}';
         
-        $style = $style.'.pagebutton {float:left; padding: 5px; margin-right: 1px; color: rgb(255, 255, 255); background-color: rgb(255, 160, 0); background-icon: linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-icon: -o-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -moz-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -webkit-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -ms-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); }';
+        $style = $style.'.pagebutton_sdb {float:left; padding: 5px; margin-right: 1px; color: rgb(255, 255, 255); background-color: rgb(255, 160, 0); background-icon: linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-icon: -o-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -moz-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -webkit-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); background-image: -ms-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.3) 100%); }';
           
         $style = $style.'</style>';
         
         $content = $style;
-        $content = $content.'<table class="msg">';
+        $content = $content.'<table class="msg_sdb">';
         
             $count = 0;
             if(is_countable($sqlRows)) {
@@ -402,69 +402,66 @@
     
             if ($count == 0) {
                 $content = $content.'<tr>';
-                $content = $content.'<td class="fst"><img src=\'img/icons/Ok.svg\'></img></td>';
-                $content = $content.'<td class="mid">Keine Meldungen vorhanden!</td>';
-                $content = $content.'<td class=\'mid\'>&nbsp;</td>';
-                $content = $content.'<td class=\'lst\'>&nbsp;</td>';
+                $content = $content.'<td class="fst_sdb"><img src=\'img/icons/Ok.svg\'></img></td>';
+                $content = $content.'<td class="mid_sdb">Keine Meldungen vorhanden!</td>';
+                $content = $content.'<td class=\'mid_sdb\'>&nbsp;</td>';
+                $content = $content.'<td class=\'lst_sdb\'>&nbsp;</td>';
                 $content = $content.'</tr>';
         } else {
           foreach ($sqlRows as $rows) {
             if ($rows['type']) {
               switch ($rows['type']) {
-                #case 5:
-                #	$type = 'orange';
-                #break;
+                case 5:
+                	$type = 'orange_sdb';
+                break;
                 case 4:
-                  $type = 'blue';
+                  $type = 'blue_sdb';
                 break;
                 case 3:
-                  $type = 'yellow';
+                  $type = 'yellow_sdb';
                 break;
                 case 2:
-                  $type = 'red';
+                  $type = 'red_sdb';
                 break;
                 case 1:
-                  $type = 'green';
+                  $type = 'green_sdb';
                 break;
                 default:
                   $type = '';
                 break;
               }
             } else {
-              $type = 'green';
+              $type = 'green_sdb';
             }
             if ($rows['icon']) {
-              $icon = '<img src=\'img/icons/'.$rows['icon'].'.svg\' class="img"></img>';
+              $icon = '<img src=\'img/icons/'.$rows['icon'].'.svg\' class="img_sdb"></img>';
             } else {
-              $icon = '<img src=\'img/icons/Ok.svg\' class="img"></img>';
+              $icon = '<img src=\'img/icons/Ok.svg\' class="img_sdb"></img>';
+            }
+            if($rows['AttachmentPath']) {
+              $linkbild = '<br><br><a href="'.$rows['AttachmentPath'].'" target="_blank"><img class=\'bild_sdb\' src="'.$rows['AttachmentPath'].'"></a>';
+            } else {
+              $linkbild = "";
             }
             
             $phpdate = strtotime($rows['date']);
-            
-            #$bild = "https://www.toggo.de/media/fallback-loewe-2-8192-10110.jpg";
-            #$html = '<img class=\'bild\' src="'.$bild.'">';
 
             $content .= '<tr>';
-            $content = $content.'<td class="fst">'.$icon.'<div class="time">'. date("d.m.Y H:i:s", $phpdate) . '</div></td>';
+
+            $content = $content.'<td class="fst_sdb">'.$icon.'<div class="time_sdb">'. date("d.m.Y H:i:s", $phpdate) . '</div></td>';
             #$content = $content.'<td class="mid">' . utf8_decode($rows['message']).'</td>';
             
             #$content = $content.'<td class="mid">' . $rows['message'].'<br><br>'.$html.'</td>';
-            $content = $content.'<td class="mid">' . $rows['message'].'</td>';
+            $content = $content.'<td class="mid_sdb">' . $rows['message'] . $linkbild . '</td>';
 
             $content = $content . "<td class='mid'>";
-            
-            #if($bild != "") { 
-              #$linkbild = '<div><img class=\'bild\' src=\'' . $bild . ' \' onclick="window.xhrGet=function xhrGet(o) {var HTTP = new XMLHttpRequest();HTTP.open(\'GET\',o.url,true\''.$Username.'\',\''.$Password.'\');HTTP.send();};window.xhrGet({ url: \'hook/SystemDashboard?ts=\' + (new Date()).getTime() + \'&action=showimage&image='.$bild.'&number='.$rows['id'].'&text='.utf8_encode($rows['message']).'\' });" ></div>'; 
-            #} else { 
-              #$linkbild = ""; 
-            #}
             $content = $content . "</td>";
           
             ################################################################################################################################################################################################################################################################################################################################################				
             if($ValueDeleteStatusID == 0) {
-              $content = $content.'<td class=\'lst\'><div class=\''.$type.'\' onclick="window.xhrGet=function xhrGet(o) {var HTTP = new XMLHttpRequest();HTTP.open(\'GET\',o.url,true,\''.$Username.'\',\''.$Password.'\');HTTP.send();};window.xhrGet({ url: \'hook/SystemDashboard?ts=\' + (new Date()).getTime() + \'&action=toggle&id='.$rows['id'].'\' });">OK</div></td>';
+              $content = $content.'<td class=\'lst_sdb\'><div class=\''.$type.'\' onclick="window.xhrGet=function xhrGet(o) {var HTTP = new XMLHttpRequest();HTTP.open(\'GET\',o.url,true,\''.$Username.'\',\''.$Password.'\');HTTP.send();};window.xhrGet({ url: \'hook/SystemDashboard?ts=\' + (new Date()).getTime() + \'&action=toggle&id='.$rows['id'].'\' });">OK</div></td>';
             } elseif ($ValueDeleteStatusID == 1) {
-              $content = $content.'<td class=\'lst\'><div class=\''.$type.'\' onclick="window.xhrGet=function xhrGet(o) {var HTTP = new XMLHttpRequest();HTTP.open(\'GET\',o.url,true,\''.$Username.'\',\''.$Password.'\');HTTP.send();};window.xhrGet({ url: \'hook/SystemDashboard?ts=\' + (new Date()).getTime() + \'&action=delete&id='.$rows['id'].'\' });">OK</div></td>';
+              $content = $content.'<td class=\'lst_sdb\'><div class=\''.$type.'\' onclick="window.xhrGet=function xhrGet(o) {var HTTP = new XMLHttpRequest();HTTP.open(\'GET\',o.url,true,\''.$Username.'\',\''.$Password.'\');HTTP.send();};window.xhrGet({ url: \'hook/SystemDashboard?ts=\' + (new Date()).getTime() + \'&action=delete&id='.$rows['id'].'\' });">OK</div></td>';
             }
             ################################################################################################################################################################################################################################################################################################################################################
             $content .= '</tr>';
@@ -511,7 +508,9 @@
           type int NOT NULL,
           icon nvarchar(20) NOT NULL,
           craftname NVARCHAR(250) NOT NULL,
-          expirationDate datetime NULL
+          expirationDate datetime NULL,
+          MediaID NVARCHAR(6) NULL,
+          AttachmentPath NVARCHAR(400) NULL
         )";
 
         #Create Indexe anlegen
