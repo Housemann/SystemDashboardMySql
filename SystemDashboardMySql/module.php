@@ -434,9 +434,9 @@
               $type = 'green_sdb';
             }
             if ($rows['icon']) {
-              $icon = '<img src=\'img/icons/'.$rows['icon'].'.svg\' class="img"></img>';
+              $icon = '<img src=\'img/icons/'.$rows['icon'].'.svg\' class="img_sdb"></img>';
             } else {
-              $icon = '<img src=\'img/icons/Ok.svg\' class="img"></img>';
+              $icon = '<img src=\'img/icons/Ok.svg\' class="img_sdb"></img>';
             }
             if($rows['AttachmentPath']) {
               $linkbild = '<br><br><a href="'.$rows['AttachmentPath'].'" target="_blank"><img class=\'bild_sdb\' src="'.$rows['AttachmentPath'].'"></a>';
@@ -448,7 +448,7 @@
 
             $content .= '<tr>';
 
-            $content = $content.'<td class="fst_sdb">'.$icon.'<div class="time">'. date("d.m.Y H:i:s", $phpdate) . '</div></td>';
+            $content = $content.'<td class="fst_sdb">'.$icon.'<div class="time_sdb">'. date("d.m.Y H:i:s", $phpdate) . '</div></td>';
             #$content = $content.'<td class="mid">' . utf8_decode($rows['message']).'</td>';
             
             #$content = $content.'<td class="mid">' . $rows['message'].'<br><br>'.$html.'</td>';
