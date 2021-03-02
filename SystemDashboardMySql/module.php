@@ -357,9 +357,17 @@
         }
   
         $query = "insert into ips_MessageBoard (date,message,status,type,icon,craftname,expirationDate, MediaID, AttachmentPath) VALUES (NOW(),'".addslashes($msg)."',0,".$type.",'".$icon."','".$craftname."',".$expirationDate.",'".$MediaID."','".$AttachmentPath."')";
-        @$this->SqlExecute($query);
-        $this->SelectSqlStatements();
-      
+        
+        if(is_numeric($type)==true && $type<=4) {
+          $return = @$this->SqlExecute($query);
+          $this->SelectSqlStatements();
+          return $return;
+        } elseif(is_numeric($type)!==true) {
+          return $this->translate("Error Type not Matched");
+        } elseif(is_numeric($type)==true && $type>4) {
+          return $this->translate("Type not found, must be Information, Alert, Warning, ToDo");
+        }
+        
       }
 
       // HtmlBox fuellen

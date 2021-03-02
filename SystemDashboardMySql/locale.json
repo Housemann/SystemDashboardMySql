@@ -37,7 +37,11 @@
         "Number of filtred messages": "Anzahl gefilterter Meldungen",
         "Number of unread messages": "Anzahl ungelesener Meldungen",
         "Number of messages read": "Anzahl gelesener Meldungen",
-        "Messages": "Meldungen"
+        "Messages": "Meldungen",
+
+        "Error Type not Matched": "Fehler, Typ ist fehlerhaft",
+        "Type not found, must be Information, Alert, Warning, ToDo": "Typ nicht korrekt, es muss Information, Alarm, Warnung oder ToDo übergeben werden"
+
       },
       "de_DE": {
         "MySql Settings": "MySql Einstellungen",
@@ -72,7 +76,10 @@
         "Number of filtred messages": "Anzahl gefilterter Meldungen",
         "Number of unread messages": "Anzahl ungelesener Meldungen",
         "Number of messages read": "Anzahl gelesener Meldungen",
-        "Messages": "Meldungen"
+        "Messages": "Meldungen",
+
+        "Error Type not Matched": "Fehler, Typ ist fehlerhaft",
+        "Type not found, must be Information, Alert, Warning, ToDo": "Typ nicht korrekt, es muss Information, Alarm, Warnung oder ToDo übergeben werden"
       }
   }
 }
