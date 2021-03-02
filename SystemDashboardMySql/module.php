@@ -332,7 +332,7 @@
       public function SendSqlMessage(string $type, string $icon, string $craftname, string $msg, int $expirationTime, string $MediaID, string $AttachmentPath) 
       {
         if (is_numeric($type)==false) { 
-          switch(strtolower($type)) {
+          switch(strtolower($this->translate($type))) {
               case $this->translate("information"):
                   $type=1;
                   break;
