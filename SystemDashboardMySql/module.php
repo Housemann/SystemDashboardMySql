@@ -363,7 +363,7 @@
           $this->SelectSqlStatements();
           return $return;
         } elseif(is_numeric($type)!==true) {
-          return $this->translate("Error Type not Matched");
+          return $this->translate("Type not found, must be Information, Alert, Warning, ToDo");
         } elseif(is_numeric($type)==true && $type>4) {
           return $this->translate("Type not found, must be Information, Alert, Warning, ToDo");
         }
