@@ -441,7 +441,9 @@
               $icon = '<img src=\'img/icons/Ok.svg\' class="img_sdb"></img>';
             }
             if($rows['AttachmentPath']) {
-              $linkbild = '<br><a href="'.$rows['AttachmentPath'].'" target="_blank"><img class=\'bild_sdb\' src="'.$rows['AttachmentPath'].'"></a>';
+              // Pfad /var/lib/symcon/webfront entfernen, weil in HTML Box nur auf URL/user zugegriffen werden kann
+              $AttachmentPath = str_replace("/var/lib/symcon/webfront", "", $rows['AttachmentPath']);
+              $linkbild = '<br><a href="'.$AttachmentPath.'" target="_blank"><img class=\'bild_sdb\' src="'.$AttachmentPath.'"></a>';
             } else {
               $linkbild = "";
             }
