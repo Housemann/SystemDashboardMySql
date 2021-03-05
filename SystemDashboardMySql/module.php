@@ -302,8 +302,14 @@
         #Profil wo Daten her geholt werden
         
         $ProfileForData = $this->ReadPropertyString("getProfileassoziation");
-        if(empty($ProfileForData))
+        if(empty($ProfileForData)) {
           $ProfileForData = 'STNB.NotificationInstanzen';
+          
+          if (IPS_VariableProfileExists($ProfileForData) === false) {
+            IPS_CreateVariableProfile($ProfileForData, 1);
+          }
+        }
+          
 
         if (IPS_VariableProfileExists($profilename) === false) {
           IPS_CreateVariableProfile($profilename, 1);
