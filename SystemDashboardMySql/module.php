@@ -367,11 +367,18 @@
         if(is_numeric($type)==true && $type<=4) {
           $return = @$this->SqlExecute($query);
           $this->SelectSqlStatements();
-          return $return;
+          
+          // Log schreiben
+          $this->LogMessage(IPS_GetName($_IPS['SELF'])." (". $_IPS['SELF'].")\n".$return, KL_NOTIFY);
+
         } elseif(is_numeric($type)!==true) {
-          return $this->translate("Type not found, must be Information, Alert, Warning, ToDo");
+          // Log schreiben
+          $msg = $this->translate("Type not found, must be Information, Alert, Warning, ToDo");
+          $this->LogMessage(IPS_GetName($_IPS['SELF'])." (". $_IPS['SELF'].")\n".$msg, KL_ERROR);
         } elseif(is_numeric($type)==true && $type>4) {
-          return $this->translate("Type not found, must be Information, Alert, Warning, ToDo");
+          // Log schreiben
+          $msg = $this->translate("Type not found, must be Information, Alert, Warning, ToDo");
+          $this->LogMessage(IPS_GetName($_IPS['SELF'])." (". $_IPS['SELF'].")\n".$msg, KL_ERROR);
         }
         
       }

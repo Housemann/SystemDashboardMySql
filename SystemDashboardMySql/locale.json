@@ -11,7 +11,7 @@
         "Username": "Benutzer",
         "Test connection": "Test Verbindung",
         "Modul config": "Modul konfiguration",
-        "Variable Profile (Profile which is taken over into the filter)": "Variablen Profil (Profil welches in den Filter übernommen wird",
+        "Variable Profile (Profile which is taken over into the filter. If empty the profile STNB.NotificationInstanzen loaded)": "Variablen Profil (Profil welches in den Filter übernommen wird. Wenn leer dann wird STNB.NotificationInstanzen geladen)",
 
         "Unread": "Ungelesen",
         "Read": "Gelesen",
@@ -54,7 +54,7 @@
         "Username": "Benutzer",
         "Test connection": "Test Verbindung",
         "Modul config": "Modul konfiguration",
-        "Variable Profile (Profile which is taken over into the filter)": "Variablen Profil (Profil welches in den Filter übernommen wird",
+        "Variable Profile (Profile which is taken over into the filter. If empty the profile STNB.NotificationInstanzen loaded)": "Variablen Profil (Profil welches in den Filter übernommen wird. Wenn leer dann wird STNB.NotificationInstanzen geladen)",
 
         "Unread": "Ungelesen",
         "Read": "Gelesen",
