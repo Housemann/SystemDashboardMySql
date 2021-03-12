@@ -368,10 +368,10 @@
           $return = @$this->SqlExecute($query);
           $this->SelectSqlStatements();
           
-          if($return!=="1") {
+          #if($return!=="1") {
             // Log schreiben
-            $this->LogMessage(IPS_GetName($_IPS['SELF'])." (". $_IPS['SELF'].")\n".$return, KL_ERROR);
-          }
+          #  $this->LogMessage(IPS_GetName($_IPS['SELF'])." (". $_IPS['SELF'].")\n".$return, KL_ERROR);
+          #}
         } elseif(is_numeric($type)!==true) {
           // Log schreiben
           $msg = $this->translate("Type not found, must be Information, Alert, Warning, ToDo");
