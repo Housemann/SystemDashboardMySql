@@ -51,24 +51,36 @@ SDB.StatusChange    | Zum umändern aller ungelesenen Nachrichten als gelesen un
 ### b. Modul konfigurieren
 
 Nach der Installation öffnet sich das Konfigurationsformular, wo man die Zugangsdaten seiner Datenbank interlegt. 
-WICHTIG --> Ihr müsst zuvor ein Schema (eine Datenbank) erstellt haben. 
+WICHTIG --> Ihr müsst zuvor ein Schema (eine Datenbank) erstellt haben. Es wird automatisch eine Tabelle "ips_MessageBoard" in der Datenbank mit Indexen erstellt.
 
 ![ModulKonf1](img/ModulKonf1.png?raw=true)
 
-
 Danach muss man ein Profil hinterlegen, wo Integerwerte hinterlegt sind. Ansonsten wird das Profil STNB.NotificationInstanzen angelegt, welches ich in einem anderen Modul nutze. 
+
 ![ProfilHinterlegen](img/ProfilHinterlegen.png?raw=true)
 
 Zur demonstration habe ich mir das Profil "IntegerTestProfil" angelegt, welches ich im Modul hinterlege.
+
 ![TestProfil](img/TestProfil.png?raw=true)
 
-Das Nachrichtenlimit habe ich bei mir auf 1500 eingegrenzt, da es bei zu vielen Nachrichten einen Überlauf der String-Variable gibt. Das Zeitinterval setzt anhand des ablaufdatums der Nachticht, diese auf gelesen. Webhook User und Passwort noch eintragen und auf "änderungen Übernehmen" klicken. 
+Das Nachrichtenlimit habe ich bei mir auf 1500 eingegrenzt, da es bei zu vielen Nachrichten einen Überlauf der String-Variable gibt. 
+Das Zeitinterval setzt anhand des Ablaufdatums was in einer Nachticht hinterlegt wird, diese auf gelesen. 
+Im unteren Bereich muss für die HTML Box ein WebHook konfiguriert werden, damit das Ändern der entsprechenden Nachricht klappt.
+Dann noch die Einstellungen mit "änderungen Übernehmen" abschließen. 
 
 ![ModulKonf2](img/ModulKonf2.png?raw=true)
 
 Nach der Anlage des Moduls sollte nun alles so aussehen...
+
 ![ObjektBaum1](img/ObjektBaum1.png?raw=true)
 
 Das Variablen-Profil SDB.Filter sollte nun auch Werte aus eurem hinterlegtem Profil übernommen haben.
+
 ![Filter1](img/Filter1.png?raw=true)
+
+Das Dashbord kann nun im Webfront angezeigt werden und schaut wie foglt aus...
+
+![FirstLook](img/FirstLook.png?raw=true)
+
+
 
