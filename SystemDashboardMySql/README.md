@@ -100,8 +100,8 @@ Das Dashbord kann nun im Webfront angezeigt werden und schaut wie foglt aus...
 
 ### b. Erste Nachricht senden
 
-Zeilenumbrüche sind mit ```html <br>``` zu erstellen in der Nachricht.
-Der Inhalt in der Var $NotificationType wird im Modul auf einen Integer-Wert geändert Information = 1, Warnung = 2, Alöarm = 3, Aufgabe = 4
+Zeilenumbrüche sind mit ```<br>``` zu in der Nachricht zu machen.
+Der Inhalt in der Variable $NotificationType (Meldungstyp), wird im Modul auf einen Integer-Wert geändert Information = 1, Warnung = 2, Alarm = 3, Aufgabe = 4
 
 ```php
 $InstanceId = 59723;
@@ -117,7 +117,7 @@ $AttachmentPath       = "";
 SDB_SendSqlMessage($InstanceId, $NotifyType, $NotifyIcon, $NotificationSubject, $Message, $ExpirationTime, $MediaID, $AttachmentPath);
 ```
 
-Danach sehr ihr diese Nachricht im Dashboard. 
+Danach sehr ihr die ersten Nachrichten im Dashboard. Je nachdem welcher Meldungstyp (Info, Warnung, Alarm) hinterlegt wurde, ist der Button auch in einer anderen Farbe.
 
 ![ErsteNachricht](img/ErsteNachricht.png?raw=true)
 
