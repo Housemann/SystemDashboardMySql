@@ -37,7 +37,7 @@
     { 
       "type": "ValidationTextBox",
       "name": "getProfileassoziation", 
-      "caption": "Variable Profile (Profile which is taken over into the filter. If empty the profile STNB.NotificationInstanzen loaded)" ,
+      "caption": "Variable Profile (Profile which is taken over into the filter. If empty the profile STNB.NotificationInstanzen created)" ,
       "multiline": true,
       "width": "100%"
     },
