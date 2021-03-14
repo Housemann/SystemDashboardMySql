@@ -17,7 +17,7 @@ Modul zum Versenden und Anzeigen einzelner Nachrichten, die in einer MySql / Mar
 
 ## 1. Funktionsumfang
 
-Mit dem Modul lassen sich Nachrichten Versenden und Anzeigen, die in einer MySql / MariaDB Datenbank abgelegt werden. Das Modul ähnelt der Meldungsanzeige aus dem Forum, nur das hier die Nachrichten in der Datenbank abgespeichert werden.
+Mit dem Modul lassen sich Nachrichten Versenden und Anzeigen, die in einer MySql / MariaDB Datenbank abgelegt werden. Das Modul ähnelt der Meldungsanzeige aus dem Forum, nur das hier die Nachrichten in der Datenbank abgespeichert werden. Quelle IP-Symcon Forum: `https://community.symcon.de/t/meldungsanzeige-im-webfront/23473`
 
 Über verschiedene Filter können Nachrichten nach dem Meldungstyp (Information, Warnung, Alarm und Aufgabe) gefiltert werden. Über ein eigenens definiertes Variablenprofil, kann man eine Integer Variable zum Filtern der Nachrichten nutzen. Weiter kann man über einen Filter, alle gerade ungelesenen Nachrichten als gelesen markieren, oder man macht dieses einzeln. Das löschen einer Nachricht aus der Datenbank ist ebenfalls möglich.
 
@@ -99,7 +99,7 @@ Das Dashbord kann nun im Webfront angezeigt werden und schaut wie folgt aus...
 
 ### a. Erste Nachricht senden
 
-Zeilenumbrüche sind mit ```<br>``` zu in der Nachricht zu machen.
+Zeilenumbrüche sind mit ```<br>``` in einer Nachricht zu machen.
 Der Inhalt in der Variable $NotificationType (Meldungstyp), wird im Modul auf einen Integer-Wert geändert (Information = 1, Warnung = 2, Alarm = 3, Aufgabe = 4).
 
 ```php
