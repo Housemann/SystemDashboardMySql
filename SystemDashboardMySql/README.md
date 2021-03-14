@@ -55,6 +55,19 @@ WICHTIG --> Ihr müsst zuvor ein Schema (eine Datenbank) erstellt haben. Es wird
 
 ![ModulKonf1](img/ModulKonf1.png?raw=true)
 
+Tabellenfelder      | Datentyp                  | Beschreibung
+------------------- | ------------------------- | ------------------------------------------------------------------
+id                  | bigint NOT NULL           | Eindeutiger Schlüssel, wird automatisch hinterlegt
+date                | timestamp NULL            | Erstelldatum der Nachricht, wird automatisch hinterlegt
+message             | nvarchar(1000) NOT NULL   | Nachrichten Inhalt 
+status              | int NOT NULL              | 0 = ungelesen / 1 = gelesen
+type                | int NOT NULL              | 0 = Alle / 1 = Information / 2 = Warnung / 3 = Alarm / 4 = Aufgabe
+icon                | nvarchar(20) NOT NULL     | Iconname aus IPS Symcon
+craftname           | nvarchar(250) NOT NULL    | Name welcher in Filtervariable steht
+expirationDate      | datetime NULL             | Abkaufdatum der Nachricht wann als gelesen Markiert werden soll
+MediaID             | nvarchar(6) NULL          | MediaId aus IPS
+AttachmentPath      | nvarchar(400) NULL        | Bild oder Dateipfad
+
 Danach muss man ein Profil hinterlegen, wo Integerwerte hinterlegt sind. Ansonsten wird das Profil STNB.NotificationInstanzen angelegt, welches ich in einem anderen Modul nutze. 
 
 ![ProfilHinterlegen](img/ProfilHinterlegen.png?raw=true)
@@ -66,7 +79,7 @@ Zur demonstration habe ich mir das Profil "IntegerTestProfil" angelegt, welches 
 Das Nachrichtenlimit habe ich bei mir auf 1500 eingegrenzt, da es bei zu vielen Nachrichten einen Überlauf der String-Variable gibt. 
 Das Zeitinterval setzt anhand des Ablaufdatums was in einer Nachticht hinterlegt wird, diese auf gelesen. 
 Im unteren Bereich muss für die HTML Box ein WebHook konfiguriert werden, damit das Ändern der entsprechenden Nachricht klappt.
-Dann noch die Einstellungen mit "änderungen Übernehmen" abschließen. 
+Dann noch die Einstellungen mit "Änderungen Übernehmen" abschließen. 
 
 ![ModulKonf2](img/ModulKonf2.png?raw=true)
 
@@ -83,4 +96,34 @@ Das Dashbord kann nun im Webfront angezeigt werden und schaut wie foglt aus...
 ![FirstLook](img/FirstLook.png?raw=true)
 
 
+## 4. Funktionsreferenz
 
+### b. Erste Nachricht senden
+
+Zeilenumbrüche sind mit <br> zu erstellen in der Nachricht.
+
+```php
+$InstanceId = 59723;
+
+$NotificationSubject  = "";
+$NotifyType           = "information";
+$NotifyIcon           = "IPS";
+$Message              = "Das ist meine erste Nachricht<br>im System Dashboard!";
+$ExpirationTime       = 3600;
+$MediaID              = "";
+$AttachmentPath       = "";
+
+SDB_SendSqlMessage($InstanceId, $NotifyType, $NotifyIcon, $NotificationSubject, $Message, $ExpirationTime, $MediaID, $AttachmentPath);
+```
+
+Danach sehr ihr diese Nachricht im Dashboard. 
+
+![ErsteNachricht](img/ErsteNachricht.png?raw=true)
+
+Wenn ihr ein Programm wie z.B. MySql Workbench oder PHP MyAdmin habt, könnt ihr die Nachricht auch dort sehen.
+
+```sql
+SELECT * FROM DATENBANKNAME.ips_MessageBoard order by date desc
+```
+
+![MYSQL](img/MYSQL.png?raw=true)
