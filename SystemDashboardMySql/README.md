@@ -130,3 +130,15 @@ SELECT * FROM DATENBANKNAME.ips_MessageBoard order by date desc
 
 
 ### b. Nachrichten filtern
+
+Über die Filterbuttons können die Nachrichten beliebig gefiltert werden. 
+
+![NachrichtFiltern1](img/NachrichtFiltern1.png?raw=true)
+
+### c. Nachrichten als gelesen markieren
+
+Um einzelne Nachtichten als gelesen zu markieren, in der HTML Box auf den Button der jeweiligen Nachricht klicken. 
+ACHTUNG --> Aufpassen das dass Löschen nicht aktiv ist.
+
+![NachrichtGelesen1](img/NachrichtGelesen1.png?raw=true)
+![NachrichtGelesen2](img/NachrichtGelesen2.png?raw=true)
