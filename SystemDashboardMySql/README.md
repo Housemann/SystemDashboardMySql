@@ -135,10 +135,21 @@ SELECT * FROM DATENBANKNAME.ips_MessageBoard order by date desc
 
 ![NachrichtFiltern1](img/NachrichtFiltern1.png?raw=true)
 
-### c. Nachrichten als gelesen markieren
+### c. Einzelne Nachrichte als gelesen markieren
 
 Um einzelne Nachtichten als gelesen zu markieren, in der HTML Box auf den Button der jeweiligen Nachricht klicken. 
 ACHTUNG --> Aufpassen das dass Löschen nicht aktiv ist.
 
 ![NachrichtGelesen1](img/NachrichtGelesen1.png?raw=true)
+
+Nun haben wir nur noch vier Nachrichten, da die eine als gelesen markiert wurde.
+
 ![NachrichtGelesen2](img/NachrichtGelesen2.png?raw=true)
+
+### d. Alle ungelesenen Nachrichte als gelesen markieren
+
+Um alle ungelesenen Nachrichten zu ändern, kann man sich mit dem Filter die entsprechenden Nachrichten filtern. Danach drückt man auf "Status ändern" und die Nachtrichten werden alle als gelesen markiert.
+
+![NachrichtenGelesen1](img/NachrichtenGelesen1.png?raw=true)
+
+![NachrichtenGelesen2](img/NachrichtenGelesen2.png?raw=true)
