@@ -68,3 +68,9 @@ Das Nachrichtenlimit habe ich bei mir auf 1500 eingegrenzt, da es bei zu vielen 
 
 ![ModulKonf2](img/ModulKonf2.png?raw=true)
 
+Nach der Anlage des Moduls sollte nun alles so aussehen...
+![ObjektBaum1](img/ObjektBaum1.png?raw=true)
+
+Das Variablen-Profil SDB.Filter sollte nun auch Werte aus eurem hinterlegtem Profil übernommen haben.
+![Filter1](img/Filter1.png?raw=true)
+
