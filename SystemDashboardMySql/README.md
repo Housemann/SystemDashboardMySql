@@ -100,7 +100,8 @@ Das Dashbord kann nun im Webfront angezeigt werden und schaut wie foglt aus...
 
 ### b. Erste Nachricht senden
 
-Zeilenumbrüche sind mit <br> zu erstellen in der Nachricht.
+Zeilenumbrüche sind mit ```html <br>``` zu erstellen in der Nachricht.
+Der Inhalt in der Var $NotificationType wird im Modul auf einen Integer-Wert geändert Information = 1, Warnung = 2, Alöarm = 3, Aufgabe = 4
 
 ```php
 $InstanceId = 59723;
