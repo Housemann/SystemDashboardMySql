@@ -53,6 +53,8 @@ Nach der Installation öffnet sich das Konfigurationsformular, wo man die Zugang
 WICHTIG --> Ihr müsst zuvor ein Schema (eine Datenbank) erstellt haben. 
 
 Überischt Serverkonfiguration
+
 ![ModulKonf1](img/ModulKonf1.png?raw=true)
+
 
 
