@@ -166,4 +166,4 @@ Das Löschen der Nachricht geht aus Sicherheitsgründen nur immer für eine einz
 
 ![NachrichtLoeschen1](img/NachrichtLoeschen1.png?raw=true)
 
-Danach ist die Nachricht komplett aus der Datenbank gelöscht worden.
+Danach ist die Nachricht komplett aus der Datenbank gelöscht.
