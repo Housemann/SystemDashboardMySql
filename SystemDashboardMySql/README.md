@@ -135,7 +135,7 @@ SELECT * FROM DATENBANKNAME.ips_MessageBoard order by date desc
 
 ![NachrichtFiltern1](img/NachrichtFiltern1.png?raw=true)
 
-### c. Einzelne Nachrichte als gelesen markieren
+### c. Einzelne Nachricht als gelesen markieren
 
 Um einzelne Nachtichten als gelesen zu markieren, in der HTML Box auf den Button der jeweiligen Nachricht klicken. 
 ACHTUNG --> Aufpassen das dass Löschen nicht aktiv ist.
@@ -146,7 +146,7 @@ Nun haben wir nur noch vier Nachrichten, da die eine als gelesen markiert wurde.
 
 ![NachrichtGelesen2](img/NachrichtGelesen2.png?raw=true)
 
-### d. Alle ungelesenen Nachrichte als gelesen markieren
+### d. Alle ungelesenen Nachrichten als gelesen markieren
 
 Um alle ungelesenen Nachrichten zu ändern, kann man sich mit dem Filter die entsprechenden Nachrichten filtern. Danach drückt man auf "Status ändern" und die Nachtrichten werden alle als gelesen markiert.
 
@@ -156,6 +156,14 @@ Nun haben wir keine ungelesene Nachricht mehr.
 
 ![NachrichtenGelesen2](img/NachrichtenGelesen2.png?raw=true)
 
-Das gleiche geht auch anders rum. Filter auf "Gelesen" stellen und dann den knopf "Status ändern" klicken. 
+Das gleiche geht auch anders rum. Filter auf "Gelesen" stellen und dann den Kopf "Status ändern" klicken. 
 
 Je nachdem wie viele Nachrichten ihr in eurer Datenbank habt, kann das aktualisieren etwas dauern.
+
+### e. Einzelne Nachricht Löschen
+
+Das Löschen der Nachricht geht aus Sicherheitsgründen nur immer für eine einzelne Nachricht. Dazu kann man wieder einen Filter setzten, den Button "Löschen" auf "Aktiv" stellen und unten in der Meldungsanzeige auf den Button in der Nachricht klicken.
+
+![NachrichtLoeschen1](img/NachrichtLoeschen1.png?raw=true)
+
+Danach ist die Nachricht komplett aus der Datenbank gelöscht worden.
