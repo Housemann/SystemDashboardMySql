@@ -22,7 +22,7 @@ Quelle IP-Symcon Forum: `https://community.symcon.de/t/meldungsanzeige-im-webfro
 
 Über verschiedene Filter können Nachrichten nach dem Meldungstyp (Information, Warnung, Alarm und Aufgabe) gefiltert werden. Über ein eigenens definiertes Variablenprofil, kann man eine Integer Variable zum Filtern der Nachrichten nutzen. Weiter kann man über einen Filter, alle gerade ungelesenen Nachrichten als gelesen markieren, oder man macht dieses einzeln. Das löschen einer Nachricht aus der Datenbank ist ebenfalls möglich.
 
-Zum Ändern oder Löschen einzelner Nachrichten wird ein Webhook angelegt, der den Befehl an IPS sendet. 
+Zum Ändern oder Löschen einzelner Nachrichten aus der HTML Box wird ein Webhook angelegt, der den entsprechenden Befehl an IPS sendet.
 
 Überischt SystemDashboard
 
@@ -31,7 +31,7 @@ Zum Ändern oder Löschen einzelner Nachrichten wird ein Webhook angelegt, der d
 ## 2. Voraussetzungen
 
  - IPS 5.5
- - MySql oder MariaDB Datenbank mit angelegtem Schema (z.B. ipsymcon) -- (getestet unter MariaDB)
+ - MySql oder MariaDB Datenbank mit angelegtem Schema (z.B. ipsymcon) -- (getestet unter MariaDB 10.4.18)
 
 ## 3. Installation
 
