@@ -31,7 +31,6 @@ Zum Ändern oder Löschen einzelner Nachrichten wird ein Webhook angelegt, der d
 
  - IPS 5.5
  - MySql oder MariaDB Datenbank mit angelegtem Schema (z.B. ipsymcon) -- (getestet unter MariaDB)
- - Verschachtelung im WebFront Editor sollte aktiviert sein, damit man alles sieht
 
 ## 3. Installation
 
