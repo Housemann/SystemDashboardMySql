@@ -49,7 +49,7 @@ SDB.StatusChange    | Zum umändern aller ungelesenen Nachrichten als gelesen un
 
 ### b. Modul konfigurieren
 
-Nach der Installation öffnet sich das Konfigurationsformular, wo man die Zugangsdaten seiner Datenbank hinterlegt. 
+Nach der Installation öffnet sich das Konfigurationsformular, wo man die Zugangsdaten seiner Datenbank interlegt. 
 WICHTIG --> Ihr müsst zuvor ein Schema (eine Datenbank) erstellt haben. 
 
 Überischt SystemDashboard
