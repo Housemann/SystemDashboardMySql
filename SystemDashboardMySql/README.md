@@ -152,4 +152,10 @@ Um alle ungelesenen Nachrichten zu ändern, kann man sich mit dem Filter die ent
 
 ![NachrichtenGelesen1](img/NachrichtenGelesen1.png?raw=true)
 
+Nun haben wir keine ungelesene Nachricht mehr.
+
 ![NachrichtenGelesen2](img/NachrichtenGelesen2.png?raw=true)
+
+Das gleiche geht auch anders rum. Filter auf "Gelesen" stellen und dann den knopf "Status ändern" klicken. 
+
+Je nachdem wie viele Nachrichten ihr in eurer Datenbank habt, kann das aktualisieren etwas dauern.
