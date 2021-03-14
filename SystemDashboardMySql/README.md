@@ -26,3 +26,33 @@ Zum Ändern oder Löschen einzelner Nachrichten wird ein Webhook angelegt, der d
 Überischt SystemDashboard
 ![Uebersicht1](img/Uebersicht1.png?raw=true)
 
+## 2. Voraussetzungen
+
+ - IPS 5.5
+ - MySql oder MariaDB Datenbank mit angelegtem Schema (z.B. ipsymcon) -- (getestet unter MariaDB)
+ - Verschachtelung im WebFront Editor sollte aktiviert sein, damit man alles sieht
+
+## 3. Installation
+
+### a. Modul hinzufügen
+
+Über das Module Control folgende URL hinzufügen: `https://github.com/Housemann/SystemDashboardMySql`
+Danach eine neue Instanz hinzufügen und nach System Dashboard suchen und dieses installieren. Es werden zu dem Modul fünf Variablenprofile angelegt. 
+
+Name                | Beschreibung
+------------------- | --------------------------------------------------------------------------------------------
+SDB.DeleteMessages  | Umschalten ob über Webhook nachrichten aus der DB gelöscht werden sollen
+SDB.Filter          | Hier werden aus dem hinterlegtem Integer-Profil die Werte automatisch hinterlegt
+SDB.MessageType     | Zum Filtern des Nachrichtentyps (Information, Warnung, Alarm und Aufgabe)
+SDB.Status          | Filter gelesen / ungelesen
+SDB.StatusChange    | Zum umändern aller ungelesenen Nachrichten als gelesen und umgekehrt
+
+### b. Modul konfigurieren
+
+Nach der Installation öffnet sich das Konfigurationsformular, wo man die Zugangsdaten seiner Datenbank hinterlegt. 
+WICHTIG --> Ihr müsst zuvor ein Schema (eine Datenbank) erstellt haben. 
+
+Überischt SystemDashboard
+![ModulKonf1](img/ModulKonf1.png?raw=true)
+
+
