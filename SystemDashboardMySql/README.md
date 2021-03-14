@@ -17,7 +17,7 @@ Modul zum Versenden und Anzeigen einzelner Nachrichten, die in einer MySql / Mar
 
 ## 1. Funktionsumfang
 
-Mit dem Modul lassen sich Nachrichten Versenden und Anzeigen, die in einer MySql / MariaDB Datenbank abgelegt werden. Das Modul ähnelt dem aus dem Forum, mit der Meldungsanzeige nur das hier die Nachrichten in der Datenbank bleiben.
+Mit dem Modul lassen sich Nachrichten Versenden und Anzeigen, die in einer MySql / MariaDB Datenbank abgelegt werden. Das Modul ähnelt der Meldungsanzeige aus dem Forum, nur das hier die Nachrichten in der Datenbank abgespeichert werden.
 
 Über verschiedene Filter können Nachrichten nach dem Meldungstyp (Information, Warnung, Alarm und Aufgabe) gefiltert werden. Über ein eigenens definiertes Variablenprofil, kann man eine Integer Variable zum Filtern der Nachrichten nutzen. Weiter kann man über einen Filter, alle gerade ungelesenen Nachrichten als gelesen markieren, oder man macht dieses einzeln. Das löschen einer Nachricht aus der Datenbank ist ebenfalls möglich.
 
