@@ -86,21 +86,21 @@ Nach der Anlage des Moduls sollte nun alles so aussehen...
 
 ![ObjektBaum1](img/ObjektBaum1.png?raw=true)
 
-Das Variablen-Profil SDB.Filter sollte nun auch Werte aus eurem hinterlegtem Profil übernommen haben.
+Das Variablen-Profil SDB.Filter sollte nun auch Werte aus eurem hinterlegtem Profil übernommen haben. Es wird automatisch der Wert Alle (0) hinterlegt, um damit alle Nachrichten anzuzeigen.
 
 ![Filter1](img/Filter1.png?raw=true)
 
-Das Dashbord kann nun im Webfront angezeigt werden und schaut wie foglt aus...
+Das Dashbord kann nun im Webfront angezeigt werden und schaut wie folgt aus...
 
 ![FirstLook](img/FirstLook.png?raw=true)
 
 
 ## 4. Funktionsreferenz
 
-### b. Erste Nachricht senden
+### Erste Nachricht senden
 
 Zeilenumbrüche sind mit ```<br>``` zu in der Nachricht zu machen.
-Der Inhalt in der Variable $NotificationType (Meldungstyp), wird im Modul auf einen Integer-Wert geändert Information = 1, Warnung = 2, Alarm = 3, Aufgabe = 4
+Der Inhalt in der Variable $NotificationType (Meldungstyp), wird im Modul auf einen Integer-Wert geändert (Information = 1, Warnung = 2, Alarm = 3, Aufgabe = 4).
 
 ```php
 $InstanceId = 59723;
