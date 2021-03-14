@@ -53,15 +53,13 @@ SDB.StatusChange    | Zum umändern aller ungelesenen Nachrichten als gelesen un
 Nach der Installation öffnet sich das Konfigurationsformular, wo man die Zugangsdaten seiner Datenbank interlegt. 
 WICHTIG --> Ihr müsst zuvor ein Schema (eine Datenbank) erstellt haben. 
 
-Überischt Serverkonfiguration
-
 ![ModulKonf1](img/ModulKonf1.png?raw=true)
 
 
 Danach muss man ein Profil hinterlegen, wo Integerwerte hinterlegt sind. Ansonsten wird das Profil STNB.NotificationInstanzen angelegt, welches ich in einem anderen Modul nutze. 
+![ProfilHinterlegen](img/ProfilHinterlegen.png?raw=true)
 
 Zur demonstration habe ich mir das Profil "IntegerTestProfil" angelegt, welches ich im Modul hinterlege.
-
 ![TestProfil](img/TestProfil.png?raw=true)
 
 Das Nachrichtenlimit habe ich bei mir auf 1500 eingegrenzt, da es bei zu vielen Nachrichten einen Überlauf der String-Variable gibt. Das Zeitinterval setzt anhand des ablaufdatums der Nachticht, diese auf gelesen. Webhook User und Passwort noch eintragen und auf "änderungen Übernehmen" klicken. 
