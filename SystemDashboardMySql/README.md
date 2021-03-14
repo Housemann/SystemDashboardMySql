@@ -97,7 +97,7 @@ Das Dashbord kann nun im Webfront angezeigt werden und schaut wie folgt aus...
 
 ## 4. Funktionsreferenz
 
-### Erste Nachricht senden
+### a. Erste Nachricht senden
 
 Zeilenumbrüche sind mit ```<br>``` zu in der Nachricht zu machen.
 Der Inhalt in der Variable $NotificationType (Meldungstyp), wird im Modul auf einen Integer-Wert geändert (Information = 1, Warnung = 2, Alarm = 3, Aufgabe = 4).
@@ -127,3 +127,6 @@ SELECT * FROM DATENBANKNAME.ips_MessageBoard order by date desc
 ```
 
 ![MYSQL](img/MYSQL.png?raw=true)
+
+
+### b. Nachrichten filtern
