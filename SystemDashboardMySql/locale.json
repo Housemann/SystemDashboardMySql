@@ -40,7 +40,7 @@
         "Messages": "Meldungen",
 
         "Error Type not Matched": "Fehler, Typ ist fehlerhaft",
-        "Type not found, must be Information, Alert, Warning, ToDo": "Typ nicht korrekt, es muss Information, Alarm, Warnung oder ToDo übergeben werden"
+        "Type not found, must be Information, Alert, Warning, ToDo": "Typ nicht korrekt, es muss Information, Alarm, Warnung oder Aufgabe übergeben werden"
 
       },
       "de_DE": {
@@ -83,7 +83,7 @@
         "Messages": "Meldungen",
 
         "Error Type not Matched": "Fehler, Typ ist fehlerhaft",
-        "Type not found, must be Information, Alert, Warning, ToDo": "Typ nicht korrekt, es muss Information, Alarm, Warnung oder ToDo übergeben werden"
+        "Type not found, must be Information, Alert, Warning, ToDo": "Typ nicht korrekt, es muss Information, Alarm, Warnung oder Aufgabe übergeben werden"
       }
   }
 }
