@@ -1,77 +1,80 @@
 {
   "elements":
   [
-    { 
-      "type": "Label", 
-      "caption": "MySql Settings" 
+    {
+      "type": "ExpansionPanel",
+      "caption": "MySql Settings",
+      "items": [
+          { 
+            "type": "ValidationTextBox",
+            "name": "server", 
+            "caption": "Server" 
+          },
+          { 
+            "type": "NumberSpinner",
+            "name": "port", 
+            "caption": "Port" 
+          },
+          { 
+            "type": "ValidationTextBox",
+            "name": "user", 
+            "caption": "User" 
+          },
+          { 
+            "type": "ValidationTextBox",
+            "name": "password", 
+            "caption": "Password" 
+          },
+          { 
+            "type": "ValidationTextBox",
+            "name": "database", 
+            "caption": "Database" 
+          }
+      ]
     },
-    { 
-      "type": "ValidationTextBox",
-      "name": "server", 
-      "caption": "Server" 
+    {
+      "type": "ExpansionPanel",
+      "caption": "Modul config",
+      "items": [
+        { 
+          "type": "ValidationTextBox",
+          "name": "getProfileassoziation", 
+          "caption": "Variable Profile (Profile which is taken over into the filter. If empty the profile STNB.NotificationInstanzen created)" ,
+          "multiline": true,
+          "width": "100%"
+        },
+        { 
+          "type": "NumberSpinner",
+          "name": "maxMessage", 
+          "caption": "Max. Messages",
+          "minimum": 1,
+          "maximum": 2000
+        },
+        { 
+          "type": "Label"
+        },	
+        { 
+          "type": "NumberSpinner",
+          "name": "UpdateIntervall", 
+          "caption": "Timerintervall"
+        }
+      ]
     },
-    { 
-      "type": "NumberSpinner",
-      "name": "port", 
-      "caption": "Port" 
-    },
-    { 
-      "type": "ValidationTextBox",
-      "name": "user", 
-      "caption": "User" 
-    },
-    { 
-      "type": "ValidationTextBox",
-      "name": "password", 
-      "caption": "Password" 
-    },
-    { 
-      "type": "ValidationTextBox",
-      "name": "database", 
-      "caption": "Database" 
-    },
-    { 
-      "type": "Label", 
-      "caption": "Modul config" 
-    },
-    { 
-      "type": "ValidationTextBox",
-      "name": "getProfileassoziation", 
-      "caption": "Variable Profile (Profile which is taken over into the filter. If empty the profile STNB.NotificationInstanzen created)" ,
-      "multiline": true,
-      "width": "100%"
-    },
-    { 
-      "type": "NumberSpinner",
-      "name": "maxMessage", 
-      "caption": "Max. Messages",
-      "minimum": 1,
-      "maximum": 2000
-    },
-    { 
-      "type": "Label"
-    },	
-    { 
-      "type": "NumberSpinner",
-      "name": "UpdateIntervall", 
-      "caption": "Timerintervall"
-    },
-    { 
-      "type": "Label"
-    },  
-    { 
-      "type": "Label", 
-      "caption": "WebHook Data" 
-    },
-    { 
-      "type": "ValidationTextBox",
-      "name": "UsernameWebHook", 
-      "caption": "Username" 
-    },
-	  { 
-      "type": "PasswordTextBox", 
-      "name": "PasswordWebHook",
-      "caption": "Password" 
+    {
+      "type": "ExpansionPanel",
+      "caption": "WebHook Data",
+      "items": [  
+        { 
+          "type": "ValidationTextBox",
+          "name": "UsernameWebHook", 
+          "caption": "Username" 
+        },
+        { 
+          "type": "PasswordTextBox", 
+          "name": "PasswordWebHook",
+          "caption": "Password" 
+        }
+      ]
     }
   ],
   "actions": [
