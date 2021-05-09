@@ -28,6 +28,7 @@
         $this->RegisterPropertyString('UsernameWebHook', '');
         $this->RegisterPropertyString('PasswordWebHook', '');
         $this->RegisterPropertyInteger("UpdateIntervall",60);
+        $this->RegisterPropertyInteger("UpdateIntervallFilter",30);
         $this->RegisterPropertyString('getProfileassoziation', '');
 
         //Profile
@@ -77,6 +78,7 @@
 
         // Timer
         $this->RegisterTimer ("Update", 0, 'SDB_TimerExpiredUpdate($_IPS[\'TARGET\']);');
+        $this->RegisterTimer ("UpdateFilter", 0, 'SDB_FillVariableProfileFilter($_IPS[\'TARGET\']);');
 
       }
  
@@ -131,6 +133,7 @@
 
         // Timer setzten
         $this->SetTimerInterval("Update", $this->ReadPropertyInteger("UpdateIntervall") * 60 * 1000);
+        $this->SetTimerInterval("UpdateFilter", $this->ReadPropertyInteger("UpdateIntervallFilter") * 60 * 1000);
 
         // VarProfil aktualisieren
         $this->FillVariableProfileFilter();

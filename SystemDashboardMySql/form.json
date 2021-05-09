@@ -56,7 +56,12 @@
         { 
           "type": "NumberSpinner",
           "name": "UpdateIntervall", 
-          "caption": "Timerintervall"
+          "caption": "Timerintervall Expiration date"
+        },
+        { 
+          "type": "NumberSpinner",
+          "name": "UpdateIntervallFilter", 
+          "caption": "Timerintervall Update Filter"
         }
       ]
     },
