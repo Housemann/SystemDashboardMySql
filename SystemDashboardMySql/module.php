@@ -473,7 +473,7 @@
             #$content = $content.'<td class="mid">' . utf8_decode($rows['message']).'</td>';
             
             #$content = $content.'<td class="mid">' . $rows['message'].'<br><br>'.$html.'</td>';
-            $content = $content.'<td class="mid_sdb">' . $rows['message'] . $linkbild . '</td>';
+            $content = $content.'<td class="mid_sdb">' . utf8_decode($rows['message']) . $linkbild . '</td>';
           
             ################################################################################################################################################################################################################################################################################################################################################				
             if($ValueDeleteStatusID == 0) {
